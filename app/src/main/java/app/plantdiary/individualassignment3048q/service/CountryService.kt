@@ -10,10 +10,10 @@ import retrofit2.Response
 
 class CountryService {
 
-    fun fetchCountries(countryName: String): MutableLiveData<ArrayList<Country>> {
+    fun fetchCountries(): MutableLiveData<ArrayList<Country>> {
         var _countries = MutableLiveData<ArrayList<Country>>()
         val service = RetrofitClientInstance.retrofitInstance?.create(ICountryDAO::class.java)
-        val call = service?.getAllCountries()
+        val call = service?.fetchCountries()
         call?.enqueue(object: Callback<ArrayList<Country>> {
             /**
              * Invoked when a network exception occurred talking to the server or when an unexpected
